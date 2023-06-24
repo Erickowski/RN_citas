@@ -14,6 +14,22 @@ const styles = StyleSheet.create({
   boldTitle: {
     fontWeight: '900',
     color: '#6d28d9'
+  },
+  btn: {
+    newAppointment: {
+      backgroundColor: '#6d28d9',
+      padding: 15,
+      marginTop: 20,
+      marginHorizontal: 20,
+      borderRadius: 10,
+    },
+    textNewAppointment: {
+      textAlign: 'center',
+      color: '#FFF',
+      fontSize: 20,
+      fontWeight: '900',
+      textTransform: 'uppercase',
+    }
   }
 })
 
