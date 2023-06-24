@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   SafeAreaView,
   Modal,
@@ -10,6 +11,21 @@ import {
 import styles from "./styles";
 
 export const Form = ({ showModal }) => {
+  const [patientInfo, setPatientInfo] = useState({
+    name: "",
+    ownerName: "",
+    ownerEmail: "",
+    ownerPhone: "",
+    symptoms: "",
+  });
+
+  const handleChangePatientInfo = (e, property) => {
+    setPatientInfo({
+      ...patientInfo,
+      [property]: e,
+    });
+  };
+
   return (
     <Modal visible={showModal} animationType="slide">
       <SafeAreaView style={styles.container}>
@@ -24,6 +40,8 @@ export const Form = ({ showModal }) => {
               style={styles.input}
               placeholder="Nombre Paciente"
               placeholderTextColor={"#666"}
+              value={patientInfo.name}
+              onChangeText={(e) => handleChangePatientInfo(e, "name")}
             />
           </View>
 
@@ -33,6 +51,8 @@ export const Form = ({ showModal }) => {
               style={styles.input}
               placeholder="Nombre Propietario"
               placeholderTextColor={"#666"}
+              value={patientInfo.ownerName}
+              onChangeText={(e) => handleChangePatientInfo(e, "ownerName")}
             />
           </View>
 
@@ -43,6 +63,10 @@ export const Form = ({ showModal }) => {
               placeholder="Email Propietario"
               placeholderTextColor={"#666"}
               keyboardType="email-address"
+              value={patientInfo.ownerEmail}
+              onChangeText={(e) =>
+                handleChangePatientInfo(e.toLowerCase(), "ownerEmail")
+              }
             />
           </View>
 
@@ -53,15 +77,22 @@ export const Form = ({ showModal }) => {
               placeholder="Telefono Propietario"
               placeholderTextColor={"#666"}
               keyboardType="number-pad"
+              maxLength={10}
+              value={patientInfo.ownerPhone}
+              onChangeText={(e) => handleChangePatientInfo(e, "ownerPhone")}
             />
           </View>
 
           <View style={styles.field}>
             <Text style={styles.label}>Sintomas Paciente</Text>
             <TextInput
-              style={styles.input}
+              style={[styles.input, styles.input.multiline]}
               placeholder="Sintomas Paciente"
               placeholderTextColor={"#666"}
+              multiline={true}
+              numberOfLines={4}
+              value={patientInfo.symptoms}
+              onChangeText={(e) => handleChangePatientInfo(e, "symptoms")}
             />
           </View>
         </ScrollView>
