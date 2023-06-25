@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
+import DatePicker from "@dietime/react-native-date-picker";
 
 import styles from "./styles";
 
@@ -16,6 +17,7 @@ export const Form = ({ showModal }) => {
     ownerName: "",
     ownerEmail: "",
     ownerPhone: "",
+    date: new Date(),
     symptoms: "",
   });
 
@@ -84,9 +86,20 @@ export const Form = ({ showModal }) => {
           </View>
 
           <View style={styles.field}>
+            <Text style={styles.label}>Fecha Alta</Text>
+            <DatePicker
+              date={patientInfo.date}
+              onChange={(e) => handleChangePatientInfo(e, "data")}
+              startYear={2023}
+              fadeColor="#6d28d9"
+              textColor="white"
+            />
+          </View>
+
+          <View style={styles.field}>
             <Text style={styles.label}>Sintomas Paciente</Text>
             <TextInput
-              style={[styles.input, styles.input.multiline]}
+              style={[styles.input, styles.inputMultiline]}
               placeholder="Sintomas Paciente"
               placeholderTextColor={"#666"}
               multiline={true}
