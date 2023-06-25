@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Pressable,
+  Alert,
 } from "react-native";
 import DatePicker from "@dietime/react-native-date-picker";
 
@@ -27,6 +28,14 @@ export const Form = ({ showModal, onCloseModal }) => {
       ...patientInfo,
       [property]: e,
     });
+  };
+
+  const handleCreateAppointment = () => {
+    const { name, ownerName, ownerEmail, date, symptoms } = patientInfo;
+    if ([name, ownerName, ownerEmail, date, symptoms].includes("")) {
+      Alert.alert("Error", "Todos los campos son obligatorios");
+      return;
+    }
   };
 
   return (
@@ -116,7 +125,7 @@ export const Form = ({ showModal, onCloseModal }) => {
 
           <Pressable
             style={styles.newAppointmentButton}
-            onLongPress={onCloseModal}
+            onPress={handleCreateAppointment}
           >
             <Text style={styles.newAppointmentButtonText}>Agregar Cita</Text>
           </Pressable>
