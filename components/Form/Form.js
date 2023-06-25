@@ -113,6 +113,13 @@ export const Form = ({ showModal, onCloseModal }) => {
               onChangeText={(e) => handleChangePatientInfo(e, "symptoms")}
             />
           </View>
+
+          <Pressable
+            style={styles.newAppointmentButton}
+            onLongPress={onCloseModal}
+          >
+            <Text style={styles.newAppointmentButtonText}>Agregar Cita</Text>
+          </Pressable>
         </ScrollView>
       </SafeAreaView>
     </Modal>

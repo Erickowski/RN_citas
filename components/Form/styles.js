@@ -48,6 +48,20 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     fontSize: 16,
   },
+  newAppointmentButton: {
+    marginVertical: 50,
+    backgroundColor: "#F59E0B",
+    paddingVertical: 15,
+    marginHorizontal: 30,
+    borderRadius: 10,
+  },
+  newAppointmentButtonText: {
+    fontWeight: "900",
+    fontSize: 16,
+    textAlign: "center",
+    color: "#5827A4",
+    textTransform: "uppercase",
+  },
 });
 
 export default styles;
