@@ -6,12 +6,13 @@ import {
   View,
   TextInput,
   ScrollView,
+  Pressable,
 } from "react-native";
 import DatePicker from "@dietime/react-native-date-picker";
 
 import styles from "./styles";
 
-export const Form = ({ showModal }) => {
+export const Form = ({ showModal, onCloseModal }) => {
   const [patientInfo, setPatientInfo] = useState({
     name: "",
     ownerName: "",
@@ -35,6 +36,10 @@ export const Form = ({ showModal }) => {
           <Text style={styles.title}>
             Nueva <Text style={styles.titleBold}>Cita</Text>
           </Text>
+
+          <Pressable style={styles.cancelButton} onLongPress={onCloseModal}>
+            <Text style={styles.cancelButtonText}>X Cancelar</Text>
+          </Pressable>
 
           <View style={styles.field}>
             <Text style={styles.label}>Nombre Paciente</Text>

@@ -35,6 +35,19 @@ const styles = StyleSheet.create({
   inputMultiline: {
     height: 100,
   },
+  cancelButton: {
+    margin: 30,
+    backgroundColor: "#5827A4",
+    padding: 15,
+    borderRadius: 10,
+  },
+  cancelButtonText: {
+    color: "#FFF",
+    textTransform: "uppercase",
+    textAlign: "center",
+    fontWeight: "900",
+    fontSize: 16,
+  },
 });
 
 export default styles;

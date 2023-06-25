@@ -21,7 +21,7 @@ export default function App() {
         <Text style={styles.btn.textNewAppointment}>Nueva cita</Text>
       </Pressable>
 
-      <Form showModal={showModal} />
+      <Form showModal={showModal} onCloseModal={toggleShowModal} />
     </SafeAreaView>
   );
 }
