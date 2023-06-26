@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   SafeAreaView,
   Modal,
@@ -12,16 +12,10 @@ import {
 import DatePicker from "@dietime/react-native-date-picker";
 
 import styles from "./styles";
+import { INITIAL_STATE } from "./constants";
 
-export const Form = ({ showModal, onCloseModal }) => {
-  const [patientInfo, setPatientInfo] = useState({
-    name: "",
-    ownerName: "",
-    ownerEmail: "",
-    ownerPhone: "",
-    date: new Date(),
-    symptoms: "",
-  });
+export const Form = ({ showModal, onCloseModal, onSetPatients }) => {
+  const [patientInfo, setPatientInfo] = useState(INITIAL_STATE);
 
   const handleChangePatientInfo = (e, property) => {
     setPatientInfo({
@@ -36,6 +30,12 @@ export const Form = ({ showModal, onCloseModal }) => {
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
+    onSetPatients(patientInfo);
+    cleanPatientInfo();
+  };
+
+  const cleanPatientInfo = () => {
+    setPatientInfo(INITIAL_STATE);
   };
 
   return (

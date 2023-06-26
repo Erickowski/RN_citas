@@ -7,9 +7,15 @@ import styles from "./styles";
 
 export default function App() {
   const [showModal, setModalShow] = useState(false);
+  const [patients, setPatients] = useState([]);
 
   const toggleShowModal = () => {
     setModalShow((prevState) => !prevState);
+  };
+
+  const handleSetPatients = (patient) => {
+    setPatients([...patients, patient]);
+    toggleShowModal();
   };
 
   return (
@@ -21,7 +27,11 @@ export default function App() {
         <Text style={styles.btn.textNewAppointment}>Nueva cita</Text>
       </Pressable>
 
-      <Form showModal={showModal} onCloseModal={toggleShowModal} />
+      <Form
+        showModal={showModal}
+        onCloseModal={toggleShowModal}
+        onSetPatients={handleSetPatients}
+      />
     </SafeAreaView>
   );
 }
