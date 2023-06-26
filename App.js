@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Text, SafeAreaView, Pressable, FlatList } from "react-native";
 
-import { Form, PatientItem } from "./components";
+import { Form, PatientItem } from "@Components";
 
 import styles from "./styles";
 

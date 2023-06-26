@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-import { formatDate } from "../../utils";
+import { formatDate } from "@Utils";
 
 export const PatientItem = ({ name, date }) => {
   return (
