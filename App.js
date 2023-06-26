@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Text, SafeAreaView, Pressable } from "react-native";
+import { Text, SafeAreaView, Pressable, FlatList } from "react-native";
 
-import { Form } from "./components";
+import { Form, PatientItem } from "./components";
 
 import styles from "./styles";
 
@@ -26,6 +26,16 @@ export default function App() {
       <Pressable onPress={toggleShowModal} style={styles.btn.newAppointment}>
         <Text style={styles.btn.textNewAppointment}>Nueva cita</Text>
       </Pressable>
+
+      {!patients.length ? (
+        <Text style={styles.noPatients}>No hay pacientes</Text>
+      ) : (
+        <FlatList
+          data={patients}
+          keyExtractor={(patient) => patient.id}
+          renderItem={({ item: patient }) => <PatientItem {...patient} />}
+        />
+      )}
 
       <Form
         showModal={showModal}

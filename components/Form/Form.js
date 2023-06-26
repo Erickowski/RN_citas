@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   SafeAreaView,
   Modal,
@@ -30,7 +30,7 @@ export const Form = ({ showModal, onCloseModal, onSetPatients }) => {
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
-    onSetPatients(patientInfo);
+    onSetPatients({ ...patientInfo, id: Date.now() });
     cleanPatientInfo();
   };
 
@@ -103,7 +103,7 @@ export const Form = ({ showModal, onCloseModal, onSetPatients }) => {
             <Text style={styles.label}>Fecha Alta</Text>
             <DatePicker
               date={patientInfo.date}
-              onChange={(e) => handleChangePatientInfo(e, "data")}
+              onChange={(e) => handleChangePatientInfo(e, "date")}
               startYear={2023}
               fadeColor="#6d28d9"
               textColor="white"
