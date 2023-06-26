@@ -1,6 +1,12 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
-export const PatientItem = ({ name }) => {
-  // console.log(props);
-  return <Text>{name}</Text>;
+import { formatDate } from "../../utils";
+
+export const PatientItem = ({ name, date }) => {
+  return (
+    <View>
+      <Text>{name}</Text>
+      <Text>{formatDate(date)}</Text>
+    </View>
+  );
 };

@@ -34,6 +34,7 @@ export default function App() {
           data={patients}
           keyExtractor={(patient) => patient.id}
           renderItem={({ item: patient }) => <PatientItem {...patient} />}
+          style={styles.patientList}
         />
       )}
 

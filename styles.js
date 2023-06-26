@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
   },
+  patientList: {
+    marginTop: 50,
+    marginHorizontal: 30,
+  },
 });
 
 export default styles;
