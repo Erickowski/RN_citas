@@ -4,7 +4,7 @@ import { formatDate } from "@Utils";
 
 import styles from "./styles";
 
-export const PatientItem = ({ name, date }) => {
+export const PatientItem = ({ name, date, id, onSelectPatient }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Paciente:</Text>
@@ -12,7 +12,10 @@ export const PatientItem = ({ name, date }) => {
       <Text style={styles.date}>{formatDate(date)}</Text>
 
       <View style={styles.buttonsContainer}>
-        <Pressable style={[styles.button, styles.editButton]}>
+        <Pressable
+          style={[styles.button, styles.editButton]}
+          onLongPress={() => onSelectPatient(id)}
+        >
           <Text style={styles.textButton}>Editar</Text>
         </Pressable>
 

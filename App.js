@@ -8,6 +8,7 @@ import styles from "./styles";
 export default function App() {
   const [showModal, setModalShow] = useState(false);
   const [patients, setPatients] = useState([]);
+  const [patient, setPatient] = useState({});
 
   const toggleShowModal = () => {
     setModalShow((prevState) => !prevState);
@@ -16,6 +17,12 @@ export default function App() {
   const handleSetPatients = (patient) => {
     setPatients([...patients, patient]);
     toggleShowModal();
+  };
+
+  const handleSelectPatient = (id) => {
+    toggleShowModal();
+    const selectedPatient = patients.find((patient) => patient.id === id);
+    setPatient(selectedPatient);
   };
 
   return (
@@ -33,7 +40,9 @@ export default function App() {
         <FlatList
           data={patients}
           keyExtractor={(patient) => patient.id}
-          renderItem={({ item: patient }) => <PatientItem {...patient} />}
+          renderItem={({ item: patient }) => (
+            <PatientItem {...patient} onSelectPatient={handleSelectPatient} />
+          )}
           style={styles.patientList}
         />
       )}
