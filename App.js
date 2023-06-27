@@ -14,6 +14,15 @@ export default function App() {
     setModalShow((prevState) => !prevState);
   };
 
+  const cleanPatient = () => {
+    setPatient({});
+  };
+
+  const handleCloseModal = () => {
+    toggleShowModal();
+    cleanPatient();
+  };
+
   const handleSetPatients = (patient) => {
     setPatients([...patients, patient]);
     toggleShowModal();
@@ -48,9 +57,10 @@ export default function App() {
       )}
 
       <Form
-        showModal={showModal}
-        onCloseModal={toggleShowModal}
+        onCloseModal={handleCloseModal}
         onSetPatients={handleSetPatients}
+        selectedPatient={patient}
+        showModal={showModal}
       />
     </SafeAreaView>
   );

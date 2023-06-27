@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   SafeAreaView,
   Modal,
@@ -11,10 +11,17 @@ import {
 } from "react-native";
 import DatePicker from "@dietime/react-native-date-picker";
 
+import { isObjectEmpty } from "@Utils";
+
 import styles from "./styles";
 import { INITIAL_STATE } from "./constants";
 
-export const Form = ({ showModal, onCloseModal, onSetPatients }) => {
+export const Form = ({
+  showModal,
+  onCloseModal,
+  onSetPatients,
+  selectedPatient,
+}) => {
   const [patientInfo, setPatientInfo] = useState(INITIAL_STATE);
 
   const handleChangePatientInfo = (e, property) => {
@@ -37,6 +44,14 @@ export const Form = ({ showModal, onCloseModal, onSetPatients }) => {
   const cleanPatientInfo = () => {
     setPatientInfo(INITIAL_STATE);
   };
+
+  useEffect(() => {
+    if (!isObjectEmpty(selectedPatient)) {
+      setPatientInfo(selectedPatient);
+    } else {
+      cleanPatientInfo();
+    }
+  }, [selectedPatient]);
 
   return (
     <Modal visible={showModal} animationType="slide">
