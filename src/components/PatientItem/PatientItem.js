@@ -4,7 +4,13 @@ import { formatDate } from "@Utils";
 
 import styles from "./styles";
 
-export const PatientItem = ({ name, date, id, onSelectPatient }) => {
+export const PatientItem = ({
+  name,
+  date,
+  id,
+  onSelectPatient,
+  onDeletePatient,
+}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Paciente:</Text>
@@ -19,7 +25,10 @@ export const PatientItem = ({ name, date, id, onSelectPatient }) => {
           <Text style={styles.textButton}>Editar</Text>
         </Pressable>
 
-        <Pressable style={[styles.button, styles.deleteButton]}>
+        <Pressable
+          style={[styles.button, styles.deleteButton]}
+          onLongPress={() => onDeletePatient(id)}
+        >
           <Text style={styles.textButton}>Eliminar</Text>
         </Pressable>
       </View>

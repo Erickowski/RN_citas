@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, SafeAreaView, Pressable, FlatList } from "react-native";
+import { Text, SafeAreaView, Pressable, FlatList, Alert } from "react-native";
 
 import { Form, PatientItem } from "@Components";
 
@@ -42,6 +42,25 @@ export default function App() {
     setPatient(selectedPatient);
   };
 
+  const handleConfirmDeletePatient = (id) => {
+    const updatedPatients = patients.filter((patient) => patient.id !== id);
+    setPatients(updatedPatients);
+  };
+
+  const handleDeletePatient = (id) => {
+    Alert.alert(
+      "¿Deseas eliminar este paciente?",
+      "Un paciente eliminado no se puede recuperar",
+      [
+        { text: "Cancelar" },
+        {
+          text: "Si, eliminar",
+          onPress: () => handleConfirmDeletePatient(id),
+        },
+      ]
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Administrador de citas</Text>
@@ -58,7 +77,11 @@ export default function App() {
           data={patients}
           keyExtractor={(patient) => patient.id}
           renderItem={({ item: patient }) => (
-            <PatientItem {...patient} onSelectPatient={handleSelectPatient} />
+            <PatientItem
+              {...patient}
+              onSelectPatient={handleSelectPatient}
+              onDeletePatient={handleDeletePatient}
+            />
           )}
           style={styles.patientList}
         />
