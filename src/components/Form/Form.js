@@ -21,6 +21,7 @@ export const Form = ({
   onCloseModal,
   onSetPatients,
   selectedPatient,
+  onUpdatePatient,
 }) => {
   const [patientInfo, setPatientInfo] = useState(INITIAL_STATE);
 
@@ -37,7 +38,11 @@ export const Form = ({
       Alert.alert("Error", "Todos los campos son obligatorios");
       return;
     }
-    onSetPatients({ ...patientInfo, id: Date.now() });
+    if (isObjectEmpty(selectedPatient)) {
+      onSetPatients({ ...patientInfo, id: Date.now() });
+    } else {
+      onUpdatePatient(patientInfo);
+    }
     cleanPatientInfo();
   };
 
@@ -58,7 +63,8 @@ export const Form = ({
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <Text style={styles.title}>
-            Nueva <Text style={styles.titleBold}>Cita</Text>
+            {isObjectEmpty(selectedPatient) ? "Nueva" : "Editar"}{" "}
+            <Text style={styles.titleBold}>Cita</Text>
           </Text>
 
           <Pressable style={styles.cancelButton} onLongPress={onCloseModal}>

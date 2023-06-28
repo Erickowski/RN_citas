@@ -28,6 +28,14 @@ export default function App() {
     toggleShowModal();
   };
 
+  const handleUpdatePatients = (updatedPatient) => {
+    const updatedPatients = patients.map((patient) =>
+      patient.id === updatedPatient.id ? updatedPatient : patient
+    );
+    setPatients(updatedPatients);
+    toggleShowModal();
+  };
+
   const handleSelectPatient = (id) => {
     toggleShowModal();
     const selectedPatient = patients.find((patient) => patient.id === id);
@@ -57,10 +65,11 @@ export default function App() {
       )}
 
       <Form
+        showModal={showModal}
+        selectedPatient={patient}
         onCloseModal={handleCloseModal}
         onSetPatients={handleSetPatients}
-        selectedPatient={patient}
-        showModal={showModal}
+        onUpdatePatient={handleUpdatePatients}
       />
     </SafeAreaView>
   );
