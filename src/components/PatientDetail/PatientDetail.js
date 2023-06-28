@@ -1,4 +1,4 @@
-import { Modal, Text, Pressable, SafeAreaView } from "react-native";
+import { Modal, Pressable, SafeAreaView, Text } from "react-native";
 
 import styles from "./styles";
 
@@ -10,11 +10,19 @@ export const PatientDetail = ({
   console.log(name);
   return (
     <Modal visible={showPatientDetails} animationType="fade">
-      <SafeAreaView>
-        <Text>Detalle</Text>
-        <Pressable onLongPress={onClosePatientDetails}>
-          <Text>Cerrar modal</Text>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.title}>
+          Información <Text style={styles.titleBold}>Paciente</Text>
+        </Text>
+
+        <Pressable
+          onLongPress={onClosePatientDetails}
+          style={styles.closeButton}
+        >
+          <Text style={styles.closeButtonText}>X Cerrar</Text>
         </Pressable>
+
+        <Text>{name}</Text>
       </SafeAreaView>
     </Modal>
   );
