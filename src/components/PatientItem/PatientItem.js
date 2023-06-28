@@ -10,28 +10,42 @@ export const PatientItem = ({
   id,
   onSelectPatient,
   onDeletePatient,
+  onShowModal,
+  onShowPatientDetails,
 }) => {
+  const handleEditPatient = () => {
+    onSelectPatient(id);
+    onShowModal();
+  };
+
+  const handleDetailsPatient = () => {
+    onSelectPatient(id);
+    onShowPatientDetails();
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Paciente:</Text>
-      <Text style={styles.text}>{name}</Text>
-      <Text style={styles.date}>{formatDate(date)}</Text>
+    <Pressable onLongPress={handleDetailsPatient}>
+      <View style={styles.container}>
+        <Text style={styles.label}>Paciente:</Text>
+        <Text style={styles.text}>{name}</Text>
+        <Text style={styles.date}>{formatDate(date)}</Text>
 
-      <View style={styles.buttonsContainer}>
-        <Pressable
-          style={[styles.button, styles.editButton]}
-          onLongPress={() => onSelectPatient(id)}
-        >
-          <Text style={styles.textButton}>Editar</Text>
-        </Pressable>
+        <View style={styles.buttonsContainer}>
+          <Pressable
+            style={[styles.button, styles.editButton]}
+            onLongPress={handleEditPatient}
+          >
+            <Text style={styles.textButton}>Editar</Text>
+          </Pressable>
 
-        <Pressable
-          style={[styles.button, styles.deleteButton]}
-          onLongPress={() => onDeletePatient(id)}
-        >
-          <Text style={styles.textButton}>Eliminar</Text>
-        </Pressable>
+          <Pressable
+            style={[styles.button, styles.deleteButton]}
+            onLongPress={() => onDeletePatient(id)}
+          >
+            <Text style={styles.textButton}>Eliminar</Text>
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };

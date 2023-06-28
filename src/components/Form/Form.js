@@ -148,7 +148,9 @@ export const Form = ({
             style={styles.newAppointmentButton}
             onPress={handleCreateAppointment}
           >
-            <Text style={styles.newAppointmentButtonText}>Agregar Cita</Text>
+            <Text style={styles.newAppointmentButtonText}>
+              {isObjectEmpty(selectedPatient) ? "Agregar" : "Editar"} Cita
+            </Text>
           </Pressable>
         </ScrollView>
       </SafeAreaView>

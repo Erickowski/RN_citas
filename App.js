@@ -1,17 +1,22 @@
 import { useState } from "react";
 import { Text, SafeAreaView, Pressable, FlatList, Alert } from "react-native";
 
-import { Form, PatientItem } from "@Components";
+import { Form, PatientItem, PatientDetail } from "@Components";
 
 import styles from "./styles";
 
 export default function App() {
-  const [showModal, setModalShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showPatientDetails, setShowPatientDetails] = useState(false);
   const [patients, setPatients] = useState([]);
   const [patient, setPatient] = useState({});
 
   const toggleShowModal = () => {
-    setModalShow((prevState) => !prevState);
+    setShowModal((prevState) => !prevState);
+  };
+
+  const toggleShowPatientDetails = () => {
+    setShowPatientDetails((prevState) => !prevState);
   };
 
   const cleanPatient = () => {
@@ -37,7 +42,6 @@ export default function App() {
   };
 
   const handleSelectPatient = (id) => {
-    toggleShowModal();
     const selectedPatient = patients.find((patient) => patient.id === id);
     setPatient(selectedPatient);
   };
@@ -81,6 +85,8 @@ export default function App() {
               {...patient}
               onSelectPatient={handleSelectPatient}
               onDeletePatient={handleDeletePatient}
+              onShowModal={toggleShowModal}
+              onShowPatientDetails={toggleShowPatientDetails}
             />
           )}
           style={styles.patientList}
@@ -93,6 +99,12 @@ export default function App() {
         onCloseModal={handleCloseModal}
         onSetPatients={handleSetPatients}
         onUpdatePatient={handleUpdatePatients}
+      />
+
+      <PatientDetail
+        {...patient}
+        showPatientDetails={showPatientDetails}
+        onClosePatientDetails={toggleShowPatientDetails}
       />
     </SafeAreaView>
   );
