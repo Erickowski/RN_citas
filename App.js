@@ -65,6 +65,11 @@ export default function App() {
     );
   };
 
+  const handleClosePatientDetails = () => {
+    toggleShowPatientDetails();
+    cleanPatient();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Administrador de citas</Text>
@@ -104,7 +109,7 @@ export default function App() {
       <PatientDetail
         {...patient}
         showPatientDetails={showPatientDetails}
-        onClosePatientDetails={toggleShowPatientDetails}
+        onClosePatientDetails={handleClosePatientDetails}
       />
     </SafeAreaView>
   );

@@ -28,12 +28,11 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     fontSize: 16,
   },
-  field: {
+  fieldContainer: {
     backgroundColor: "#FFF",
     marginHorizontal: 30,
-    padding: 10,
+    padding: 20,
     borderRadius: 10,
-    height: 200,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -42,6 +41,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+  },
+  field: {
+    marginBottom: 10,
+  },
+  label: {
+    textTransform: "uppercase",
+    fontWeight: "600",
+    color: "#374151",
+    fontSize: 12,
+  },
+  value: {
+    fontWeight: "700",
+    fontSize: 20,
+    color: "#334155",
   },
 });
 
