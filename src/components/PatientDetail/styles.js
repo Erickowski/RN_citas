@@ -28,6 +28,21 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     fontSize: 16,
   },
+  field: {
+    backgroundColor: "#FFF",
+    marginHorizontal: 30,
+    padding: 10,
+    borderRadius: 10,
+    height: 200,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
 });
 
 export default styles;

@@ -24,7 +24,9 @@ export const PatientDetail = ({
           </Pressable>
         </View>
 
-        <Text>{name}</Text>
+        <View style={styles.field}>
+          <Text>{name}</Text>
+        </View>
       </SafeAreaView>
     </Modal>
   );
