@@ -12,6 +12,7 @@ import {
 import DatePicker from "@dietime/react-native-date-picker";
 
 import { isObjectEmpty } from "@Utils";
+import { ShowDate } from "@Components";
 
 import styles from "./styles";
 import { INITIAL_STATE } from "./constants";
@@ -122,12 +123,16 @@ export const Form = ({
 
           <View style={styles.field}>
             <Text style={styles.label}>Fecha Alta</Text>
+            {!isObjectEmpty(selectedPatient) ? (
+              <ShowDate date={patientInfo.date} />
+            ) : null}
             <DatePicker
               date={patientInfo.date}
               onChange={(e) => handleChangePatientInfo(e, "date")}
               startYear={2023}
               fadeColor="#6d28d9"
               textColor="white"
+              height={175}
             />
           </View>
 
