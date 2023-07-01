@@ -98,19 +98,23 @@ export default function App() {
         />
       )}
 
-      <Form
-        showModal={showModal}
-        selectedPatient={patient}
-        onCloseModal={handleCloseModal}
-        onSetPatients={handleSetPatients}
-        onUpdatePatient={handleUpdatePatients}
-      />
+      {showModal ? (
+        <Form
+          showModal={showModal}
+          selectedPatient={patient}
+          onCloseModal={handleCloseModal}
+          onSetPatients={handleSetPatients}
+          onUpdatePatient={handleUpdatePatients}
+        />
+      ) : null}
 
-      <PatientDetail
-        {...patient}
-        showPatientDetails={showPatientDetails}
-        onClosePatientDetails={handleClosePatientDetails}
-      />
+      {showPatientDetails ? (
+        <PatientDetail
+          {...patient}
+          showPatientDetails={showPatientDetails}
+          onClosePatientDetails={handleClosePatientDetails}
+        />
+      ) : null}
     </SafeAreaView>
   );
 }
